@@ -7,19 +7,23 @@ class Field extends React.Component {
 
     render() {
         const formattedName =
-            this.props.name[0].toUpperCase() + this.props.name.substr(1);
+            this.props.uniqueName[0].toUpperCase() +
+            this.props.uniqueName.substr(1);
 
-        return (
+        return this.props.editable ? (
             <div>
-                this.props.editable ?
-                <label htmlFor={this.props.name}>{formattedName}: </label>
+                <label htmlFor={this.props.uniqueName}>{formattedName}: </label>
                 <input
+                    onChange={e => this.props.handleChange(e)}
                     type="text"
                     value={this.props.value}
-                    name={this.props.name}
-                    id={this.props.name}
-                />{" "}
-                :<p>{formattedName + ": " + this.props.value}</p>
+                    name={this.props.uniqueName}
+                    id={this.props.uniqueName}
+                />
+            </div>
+        ) : (
+            <div>
+                <p>{formattedName + ": " + this.props.value}</p>
             </div>
         );
     }
