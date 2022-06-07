@@ -23,7 +23,7 @@ class Field extends React.Component {
             </div>
         ) : (
             <div>
-                <p>{formattedName + ": " + this.props.value}</p>
+                <p>{formattedName + ": " + (this.props.value || "N/A")}</p>
             </div>
         );
     }
