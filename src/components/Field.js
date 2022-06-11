@@ -1,32 +1,25 @@
 import React from "react";
 
-class Field extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+const Field = props => {
+    const formattedName =
+        props.uniqueName[0].toUpperCase() + props.uniqueName.substr(1);
 
-    render() {
-        const formattedName =
-            this.props.uniqueName[0].toUpperCase() +
-            this.props.uniqueName.substr(1);
-
-        return this.props.editable ? (
-            <div>
-                <label htmlFor={this.props.uniqueName}>{formattedName}: </label>
-                <input
-                    onChange={e => this.props.handleChange(e)}
-                    type="text"
-                    value={this.props.value}
-                    name={this.props.uniqueName}
-                    id={this.props.uniqueName}
-                />
-            </div>
-        ) : (
-            <div>
-                <p>{formattedName + ": " + (this.props.value || "N/A")}</p>
-            </div>
-        );
-    }
-}
+    return props.editable ? (
+        <div>
+            <label htmlFor={props.uniqueName}>{formattedName}: </label>
+            <input
+                onChange={e => props.handleChange(e)}
+                type="text"
+                value={props.value}
+                name={props.uniqueName}
+                id={props.uniqueName}
+            />
+        </div>
+    ) : (
+        <div>
+            <p>{formattedName + ": " + (props.value || "N/A")}</p>
+        </div>
+    );
+};
 
 export default Field;
